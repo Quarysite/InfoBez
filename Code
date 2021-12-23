@@ -1,0 +1,67 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int mas[44] = { 5,0,0,0,0,1,1,0,0,1,0,1,0,1,1,1,1,0,1,0,0,1,1,0,1,0,1,1,0,0,1,0,1,1,0,0,0,1,0,0,1,0,1,5 }; //5 на концах, как ограничение от вылета.
+    int mas2[42] = { 5,0,0,0,1,0,0,0,0,1,0,1,1,1,1,1,1,0,0,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,1,5 };
+
+    int u1, u2 = 0, u3 = 0, u1c, u2c, u3c, x = 0, y = 0, z = 0, inti, intix = 0, chPt = 0; // u* - это номер элемента массива (строки) u*c - счетчики для цикла. xyz- значения в массиве(строке).
+    u1c = 1;
+    inti = 8;
+
+
+    for (u2c = 2; u2c <= 10;u2c++)
+    {
+        for (u3c = u2c+1; u3c <= 11; u3c++)
+        {
+            u1 = u1c;
+            u2 = u2c;
+            u3 = u3c;
+
+            intix =0;
+
+            
+
+            while (mas[u3] != 5)
+            {
+                x = mas[u1];
+                y = mas[u2];
+                z = mas[u3];
+
+                /////////////////////
+
+                if (x + y - z >= 1)
+                    chPt = 1;
+                else
+                    chPt = 0;
+
+                if (mas2[u1] == chPt)
+                    intix += 1;
+                else
+                    break;
+
+                ////////////////////
+                if (mas[u3] == 5)
+                    break;
+                if (intix == inti)
+                    break;
+
+                u1 += 1;
+                u2 += 1;
+                u3 += 1;
+            }
+
+            if (intix == inti)
+                break;
+        }
+
+        if (intix == inti)
+            break;
+    }
+    cout << u1c << "  " << u2c << "  " << u3c << "  " << endl;
+    cout << u2c - u1c << "  " << u3c - u2c << endl;
+    cout << (u2c - u1c) + (u3c - u2c) << endl;
+
+
+}
